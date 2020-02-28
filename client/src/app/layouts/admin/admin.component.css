@@ -1,0 +1,47 @@
+
+
+nav {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+
+.border {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  background-color: #f1f1f1;
+  height: 100%; /* Полная высота */
+  position: fixed; /* Сделайте его придерживаться, даже на прокрутки */
+  overflow: auto; /* Включить прокрутку, если sidenav имеет слишком много содержимого */
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+font-size: 16px;
+color: teal;
+  }
+  .border li {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  padding: 7px 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+  background: whitesmoke;
+  margin-right: 10px;
+  border-radius: 5px;
+  border-left: 10px;
+  box-shadow: 2px -2px 5px 0 rgba(0,0,0,.1),
+       -2px -2px 5px 0 rgba(0,0,0,.1),
+      2px 2px 5px 0 rgba(0,0,0,.1),
+      -2px 2px 5px 0 rgba(0,0,0,.1);
+  font-size: 16px;
+  color:teal;
+  letter-spacing: 2px;
+  transition: 0.3s all linear;
+  }
+
+  .border li {border-color: teal}
+
+  .border li:hover {border-left: 10px solid transparent;}
+
+  .border li:hover {border-right: 10px solid teal}
+

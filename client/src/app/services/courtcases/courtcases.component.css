@@ -1,0 +1,11 @@
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 90%; /* Ограничение ширины */
+  margin: 1em;
+  font-family: 'Lato', sans-serif;
+    text-align: justify;
+  font-size: 16px; /* размер шрифта */
+  padding: 1em;
+}
+
+

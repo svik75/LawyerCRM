@@ -1,0 +1,19 @@
+
+<div class="center">
+  <br><br><br>
+  <button  class="modal-action btn waves-effect" (click)="ShowGP()">{{showGrPl === false ? 'Показать' : 'Скрыть'}} рассрочку оплаты
+    </button>
+    </div>
+<div class="row" *ngIf="showGrPl">
+  <div><h5 class="center teal-text"><br><b>Юридические услуги вы можете оплачивать в рассрочку.</b> <br></h5>
+<div style="display: block;">
+  <canvas baseChart
+    [datasets]="barChartData"
+    [labels]="barChartLabels"
+    [options]="barChartOptions"
+    [plugins]="barChartPlugins"
+    [legend]="barChartLegend"
+    [chartType]="barChartType">
+  </canvas>
+</div>
+</div>

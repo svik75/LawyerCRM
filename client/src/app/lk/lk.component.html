@@ -1,0 +1,101 @@
+<div class="container" [ngStyle]="{'padding-bottom': '30px', 'padding-top': '30px'}">
+<form
+class="card"
+[formGroup] = "form"
+(ngSubmit)="onSubmit()"
+*ngIf="user$ | async as user"
+>
+  <div class="card-content">
+      <span class="card-title">Редактирование аккаунта</span>
+      <label for="name">Имя:</label>
+      <div class="input-field">
+        <input
+        formControlName ="name"
+        name="name" type="text"
+        [ngClass]="{'invalid': form.get('name').invalid && form.get('name').touched}"
+
+        >
+
+        <span class="helper-text red-text"
+        *ngIf="form.get('name').invalid && form.get('name').touched"
+        >
+        <span *ngIf="form.get('name').errors['required']">Имя не должно быть пустым</span>
+
+      </span>
+    </div><label for="phone">Телефон:</label>
+    <div class="input-field">
+      <input
+      formControlName ="phone"
+      name="phone" type="tel"
+      [ngClass]="{'invalid': form.get('phone').invalid && form.get('phone').touched}"
+
+      >
+
+      <span class="helper-text red-text"
+      *ngIf="form.get('phone').invalid && form.get('phone').touched"
+      >
+      <span *ngIf="form.get('phone').errors['required']">Телефон не должен быть пустым</span>
+
+    </span>
+  </div><label for="email">Email:</label>
+      <div class="input-field">
+          <input
+          formControlName ="email"
+          name="email" type="email"
+          [ngClass]="{'invalid': form.get('email').invalid && form.get('email').touched}"
+        [disabled] = "true"
+          >
+
+          <span class="helper-text red-text"
+          *ngIf="form.get('email').invalid && form.get('email').touched"
+          >
+          <span *ngIf="form.get('email').errors['required']">Email не должен быть пустым</span>
+          <span *ngIf="form.get('email').errors['email']">Введите корректный email</span>
+        </span>
+      </div>
+      <div class="green-text" *ngIf="user.isActivated">
+        <i class="material-icons">check</i>
+        <label >Email подтвержден</label>
+    </div>
+    <div class="red-text" *ngIf="!user.isActivated">
+      <i class="material-icons">clear</i>
+      <label >Email не подтвержден</label>
+  </div>
+      <div class="input-field">
+          <input
+          formControlName = "password"
+          [ngClass]="{'invalid': form.get('password').invalid && form.get('password').touched}"
+          name="password" type="password">
+          <label for="password">Пароль:</label>
+          <span class="helper-text red-text"
+          *ngIf="form.get('password').invalid && form.get('password').touched"
+          >
+          <span *ngIf="form.get('password').errors['required']">Пароль не должен быть пустым</span>
+          <span *ngIf="form.get('password').errors['minlength'] && form.get('password').errors['minlength']['requiredLength']">
+            Пароль должен быть не менее {{form.get('password').errors['minlength']['requiredLength']}} символов.
+            Длина пароля{{form.get('password').errors['minlength']['actualLength']}}
+          </span>
+        </span>
+      </div>
+  </div>
+  <div class="card-action">
+      <button
+      type="button"
+      class="modal-action btn waves-effect"
+
+      (click)="onEdit()"
+      >{{btnTitle}}
+    </button>
+<br>
+      <button *ngIf="isEditing"
+      type="submit"
+      class="modal-action btn waves-effect"
+      [disabled]="form.invalid || form.disabled"
+      type="submit"
+      >Сохранить изменения
+    </button>
+
+  </div>
+</form>
+</div>
+

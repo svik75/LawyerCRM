@@ -1,0 +1,144 @@
+<ng-container *ngIf="!isEditing && !isAdding">
+<div *ngIf="!isLoading; else loader" class="row" [ngStyle]="{'padding-bottom': '30px', 'padding-top': '30px'}">
+  <h5 class="center teal-text">Заявки физических лиц</h5>
+
+  <h5 class="teal-text">Фильтр</h5>
+  <button (click)="onFilterClick()" class="btn btn-small"
+  [ngClass]="{'active': isFilterVisible, 'red': isFiltered()}"
+    data-tooltip="Открыть фильтр" data-position="left" #tooltip>
+    <i class="material-icons">filter_list</i>
+  </button>
+  <app-query-filter (onFilter)="applyFilter($event)" [chLink]=links
+  *ngIf="isFilterVisible"></app-query-filter>
+
+
+  <table *ngIf="claims.length !==0; else empty" class="responsive-table centered">
+    <thead>
+      <tr>
+        <th>Дата</th>
+        <th>Имя</th>
+        <th>Email</th>
+        <th>Телефон</th>
+        <th>Статус</th>
+        <th>Завершено</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let claim of claims">
+        <td>{{claim.date | date}}</td>
+        <td>{{claim.name}}</td>
+        <td>{{claim.email}}</td>
+        <td>{{claim.phone}}</td>
+        <td>{{claim.status}}</td>
+        <td> <i *ngIf="!!claim.done" class="material-icons teal-text text-lighten-2">done</i>
+          <i *ngIf="!claim.done" class="material-icons grey-text">remove</i>
+          </td>
+        <td><i class="material-icons pointer" (click)="edit(claim)">edit</i></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="center" [hidden]="noMoreItems">
+    <button  type="button" (click)="loadMore()"
+      class="modal-action btn waves-effect waves-light center">Еще ...</button>
+  </div>
+
+  <!-- float btn -->
+  <div class="fixed-action-btn" #floatBtn>
+    <a class="btn-floating btn-large pulse red">
+      <i (click) = "addClaim()" class="large material-icons">add</i>
+    </a>
+  </div>
+
+  <ng-template #empty>
+    <div class="center">
+      Вопросов клиентов пока нет
+    </div>
+  </ng-template>
+
+</div>
+</ng-container>
+
+<!-- edit form -->
+<div [hidden]="!isEditing && !isAdding" class="container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <H4 *ngIf="isEditing">Редактирование</H4>
+      <H4 *ngIf="isAdding">Добавление новой заявки юрлица</H4>
+      <div class="col s12">
+        <div class="row">
+          <div class="col s5"><span>Дата</span>
+            <input #date formControlName="date" type="date" [value]="form.get('date').value | date:'dd/MM/yyyy' ">
+          </div>
+          <div class="col s5"><span>Имя</span>
+            <input formControlName="name" type="text"
+              [ngClass]="{'invalid': form.get('name').invalid && form.get('name').touched}">
+          </div>
+
+          <div class="col s5"><span>Телефон</span>
+            <input formControlName="phone" type="number"
+              [ngClass]="{'invalid': form.get('phone').invalid && form.get('phone').touched}">
+          </div>
+
+          <div class="col s5"> <span>Email</span>
+            <input formControlName="email" type="email">
+          </div>
+          <div class="col s5"><span>Откуда заявка</span>
+            <input formControlName="queryPath" type="text"
+              [ngClass]="{'invalid': form.get('queryPath').invalid && form.get('queryPath').touched}">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s5"> <span>Статус</span>
+            <select #formSelect class="custom-select" formControlName="status" type="select">
+              <option *ngFor="let link of links" [value]="link">{{link}}</option>
+            </select>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Дата</th>
+                <th>Менеджер</th>
+                <th>Событие</th>
+                <th>Комментарий</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let hist of history">
+                <td>{{hist.date | date}}</td>
+                <td>{{hist.user}}</td>
+                <td>{{hist.event}}</td>
+                <td>{{hist.comments}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="input-field">
+          <p class="mb1">Комментарий</p>
+          <textarea formControlName="comments" id="pos-name" type="text" required style="padding-bottom:100px"
+            [ngClass]="{'invalid': form.get('comments').invalid && form.get('comments').touched}"></textarea>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button [disabled]="form.disabled" type="button" (click)="onCancel()"
+          class="modal-action btn waves-effect waves-light">Закрыть</button>
+        <button *ngIf="isEditing" [disabled]="form.invalid || form.disabled" class="modal-action btn waves-effect waves-light"
+          type="submit">Добавить событие</button>
+          <button *ngIf="isAdding" [disabled]="form.invalid || form.disabled" class="modal-action btn waves-effect waves-light"
+          type="submit">Создать заявку</button>
+      </div>
+
+    </div>
+  </form>
+</div>
+
+
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
+

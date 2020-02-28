@@ -1,0 +1,116 @@
+<!-- -->
+<div class="container">
+  <div *ngIf="!quizFinished; else afterQuiz" class="row" [ngStyle]="{'padding-bottom': '30px', 'padding-top': '30px'}">
+    <h5 class="center">Услуги для юридических лиц<br><br></h5>
+    <div class="collection">
+      <ng-container *ngIf="parent>=0 && currentId > 1">
+        <button class="modal-action btn waves-effect" (click)="onClickBack()">Назад
+        </button>
+      </ng-container>
+
+      <ng-container *ngFor="let item of listUl">
+        <a class="collection-item" *ngIf="currentId === item.id" (click)="onClick(item)"
+          [ngStyle]="{'font-size': 'large', 'cursor': 'pointer'}">{{item.name}}</a>
+      </ng-container>
+    </div>
+  </div>
+
+  <ng-template #afterQuiz>
+    <div class="row s2">
+      <div class="center">
+        <button class="modal-action btn waves-effect" (click)="onClickStart()">Список услуг
+        </button>
+
+      </div>
+      <H5 class="center teal-text"><b>{{queryPath[0]}}</b><br><br></H5>
+      <div class="center">
+      <img class="responsive-img" [src]="pic">
+      </div>
+      <br>
+      <div class="description" [innerHTML]="returnDescription(currentUid)">
+      </div>
+
+      <H5 class="center teal-text">Стоимость услуг<br><br></H5>
+      <div class="cost center" [innerHTML]='returnPrice(currentUid)'>
+      </div>
+
+
+
+      <ng-content *ngIf="currentUid === 2 || currentUid === 6 then bar; else pie">
+      </ng-content>
+
+      <ng-template #bar>
+        <app-barchart></app-barchart>
+      </ng-template>
+
+      <ng-template #pie>
+        <app-piechart></app-piechart>
+      </ng-template>
+
+      <div class="row">
+        <app-courtcases [courtId]=true></app-courtcases>
+      </div>
+
+      <div class="description" [innerHTML]='returnBlog(currentId)'>
+      </div>
+
+      <H5 class="center teal-text"><br><b>Как мы работаем?</b><br><br></H5>
+      <div class="description2">Вы получаете у нас бесплатную консультацию<br><i class="material-icons medium">arrow_downward</i><br>Подписываем с вами договор<br><i class="material-icons medium">arrow_downward</i><br>Мы качественно выполняем работу<br><i class="material-icons medium">arrow_downward</i><br>Вы получаете желаемый результат
+      </div>
+
+      <div class="row" [ngStyle]="{'padding-bottom': '30px', 'padding-top': '30px'}">
+        <form class="card" [formGroup]="form" (ngSubmit)="onSubmit()">
+          <span class="card-title center">&nbsp; &nbsp; Оформите заявку на услугу</span>
+          <div class="input-field col s12">
+            <i class="material-icons prefix">face</i>
+
+            <input id="name" type="text" formControlName="name"
+              [ngClass]="{'invalid': form.get('name').invalid && form.get('name').touched}">
+            <label for="name">Ваше имя:</label>
+
+            <span class="helper-text red-text" *ngIf="form.get('name').invalid && form.get('name').touched">
+              <span *ngIf="form.get('name').errors['required']">Введите имя</span>
+            </span>
+          </div>
+          <div class="input-field col s12">
+            <i class="material-icons prefix">phone</i>
+            <input id="phone" type="text" formControlName="phone"
+              [ngClass]="{'invalid': form.get('phone').invalid && form.get('phone').touched}">
+            <label for="name">Телефон:</label>
+            <span class="helper-text red-text" *ngIf="form.get('phone').invalid && form.get('phone').touched">
+              <span *ngIf="form.get('phone').errors['required']">Телефон не должен быть пустым</span>
+
+            </span>
+          </div>
+          <div class="input-field col s12">
+            <i class="material-icons prefix">email</i>
+            <input id="email" type="text" formControlName="email"
+              [ngClass]="{'invalid': form.get('email').invalid && form.get('email').touched}">
+            <label for="name">email:</label>
+            <span class="helper-text red-text" *ngIf="form.get('email').invalid && form.get('email').touched">
+              <span *ngIf="form.get('email').errors['required']">Email не должен быть пустым</span>
+              <span *ngIf="form.get('email').errors['email']">Введите корректный email</span>
+            </span>
+          </div>
+
+          <div class="row">
+            <button type="submit" class="modal-action btn waves-effect"
+              [disabled]="form.invalid || form.disabled">Отправить заявку
+            </button>
+            <br>
+          </div>
+
+        </form>
+      </div>
+
+
+
+      <div class="center">
+        <span class="center flow-text">Или получите бесплатную консультацию</span>
+        <br><br>
+        <button type="submit" class="modal-action btn waves-effect" (click)="onSubmitQuestion()">Задать вопрос
+        </button>
+      </div>
+    </div>
+
+  </ng-template>

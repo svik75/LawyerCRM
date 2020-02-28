@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row" [ngStyle]="{'padding-bottom': '30px', 'padding-top': '30px'}">
+    <h5 class="center teal-text"><br>Наш блог<br><br></h5>
+    <ul #collapsible class="collapsible popout" materialize="collapsible" [ngStyle]="{'color': 'teal'}">
+      <ng-container *ngFor="let item of blog">
+        <li>
+          <div class="collapsible-header" [ngStyle]="{'font-size': 'large'}">
+            <i class="material-icons" >expand_more</i>{{returnCategoryName(item.uidParent)}}
+            </div>
+            <div class="collapsible-body"
+              [ngStyle]="{'font-size': 'large'}"><p [innerHTML]="item.descr"></p>
+          </div>
+        </li>
+      </ng-container>
+      </ul>
+  </div>
+

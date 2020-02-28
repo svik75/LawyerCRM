@@ -1,0 +1,49 @@
+<div class="container" [ngStyle]="{'padding-bottom': '30px', 'padding-top': '30px'}">
+
+<form [formGroup]="form" (ngSubmit)="onSubmitQuestion()">
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title teal-text">Задайте вопрос юристам и получите ответ по электронной почте или по телефону</span>
+      <div class="input-field">
+        <textarea formControlName="query" class="materialize-textarea" type="text" required
+          [ngClass]="{'invalid': form.get('query').invalid && form.get('query').touched}"></textarea>
+        <label for="pos-name">Ваш вопрос</label>
+        <span class="helper-text red-text" *ngIf="form.get('query').invalid && form.get('query').touched">
+          Напишите ваш вопрос
+        </span>
+      </div>
+      <div class="input-field">
+        <input  formControlName="name" type="text"
+          [ngClass]="{'invalid': form.get('name').invalid && form.get('name').touched}">
+        <label for="pos-cost">Имя</label>
+        <span class="helper-text red-text" *ngIf="form.get('name').invalid && form.get('name').touched">
+          Введите ваше имя
+        </span>
+      </div>
+      <div class="input-field">
+        <input  formControlName="phone" type="number"
+          [ngClass]="{'invalid': form.get('phone').invalid && form.get('phone').touched}">
+        <label for="pos-cost">Телефон</label>
+        <span class="helper-text red-text" *ngIf="form.get('phone').invalid && form.get('phone').touched">
+          Введите телефон
+        </span>
+      </div>
+      <div class="input-field">
+        <input  formControlName="email" type="email">
+        <label for="pos-cost">Email</label>
+        <span class="helper-text red-text" *ngIf="form.get('email').invalid && form.get('email').touched">
+          Введите email
+        </span>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <button [disabled]="form.disabled"
+      type="button" (click)="onCancel()" class="modal-action btn waves-effect waves-light">Отмена</button>
+      <button [disabled]="form.invalid || form.disabled"
+      class="modal-action btn waves-effect waves-light" (click)="onSubmit()" type="submit">Отправить</button>
+    </div>
+  </div>
+</form>
+</div>
+

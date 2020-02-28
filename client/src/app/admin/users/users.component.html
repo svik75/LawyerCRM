@@ -1,0 +1,37 @@
+<div class="row" >
+        <h5 class="center teal-text">Пользователи</h5>
+        <table *ngIf="users.length !==0; else empty" class=" responsive-table centered">
+          <thead>
+            <tr>
+              <th>Имя</th>
+              <th>Email</th>
+              <th>Телефон</th>
+              <th>Админ</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr  *ngFor="let user of users">
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.phone}}</td>
+            <td>
+              <label><input #check type="checkbox"  class="filled-in" [checked]="!!user.isAdmin"
+               (change)="onChange($event, user)"><span> </span></label></td>
+            <td><i class="material-icons pointer" (click)="delete($event,user)">delete</i></td>
+
+          </tr>
+          </tbody>
+        </table>
+          <ng-template #empty>
+            <div class="center">
+              Вопросов нет
+            </div>
+          </ng-template>
+
+
+  </div>
+      <ng-template #loader>
+            <app-loader></app-loader>
+          </ng-template>

@@ -1,0 +1,150 @@
+<ul id="dropdown1" class="dropdown-content">
+
+  <li *ngIf="!auth.isAuthenticated()"><a routerLink="/login">Вход</a></li>
+  <li *ngIf="!auth.isAuthenticated()"><a routerLink="/register">Регистрация</a></li>
+  <li *ngIf="auth.isAuthenticated()"><a routerLink="/lk">Аккаунт</a></li>
+  <li *ngIf="auth.isAdmin()"><a routerLink="/admin/query">Админ</a></li>
+  <li class="divider"></li>
+  <li *ngIf="auth.isAuthenticated()"><a (click)="logout()">Выход</a></li>
+</ul>
+
+<nav class="teal white-text" role="navigation" [hidden]="isMobile()">
+  <div class="nav-wrapper ">
+    <span [ngStyle]="{'padding': '50px'}">ООО "Гарант Консалтинг"</span>
+    <ul ul class="right hide-on-med-and-down">
+      <li><a routerLink="/main" class="white-text">Главная</a></li>
+      <li class="divider"></li>
+      <li><a routerLink="/showpage" class="white-text">О нас</a></li>
+      <li><a routerLink="/showprice" class="white-text">Цены</a></li>
+      <li><a routerLink="/courtcases" class="white-text">Наши дела</a></li>
+      <li><a routerLink="/blog" class="white-text">Блог</a></li>
+
+      <li><a #navbar class="dropdown-trigger white-text" data-target="dropdown1"> <i
+            class="material-icons right">dehaze</i></a></li>
+    </ul>
+  </div>
+</nav>
+<!-- Всплывающее меню -->
+<div class="nav-wrapper" [hidden]="!isMobile()">
+  <div class="row teal">
+    <div class="col s7 push-s5 teal">
+        <a href="/main" class="white-text">Главная</a>
+      </div>
+    <div class="col s5 pull-s7  teal">
+      <a href="#!" data-target="mobile-nav" class="sidenav-trigger" [ngStyle]="{'vertical-align': 'middle'}">
+        <i class="material-icons" (click)="openMenu()" [ngStyle]="{'vertical-align': 'middle', 'color':'white'}">menu</i>
+      </a>
+    </div>
+    <div class="center">&nbsp;</div>
+      <ul id="slide-out" class="sidenav" #sidenavmain>
+        <li>
+          <div class="user-view">
+            <div class="background">
+              <img src="assets/office.jpg">
+            </div>
+            <a (click)="redirectFunction('lk')" routerLinkActive="rou ter-link-active"><img class="circle" src="assets/yuna.png"></a>
+            <a (click)="redirectFunction('lk')" routerLinkActive="router-link-active"><span
+                class="white-text name">{{auth.getUserName()}}</span></a>
+            <a (click)="redirectFunction('lk')" routerLinkActive="router-link-active"><span
+                class="white-text email">{{auth.getUserEmail()}}</span></a>
+          </div>
+        </li>
+        <ng-container *ngIf="!auth.isAuthenticated()">
+
+          <li routerLinkActive="active">
+            <a (click)="redirectFunction('login')">Войти</a></li>
+          <li routerLinkActive="active">
+            <a (click)="redirectFunction('register')">Регистрация</a></li>
+          <li class="divider"></li>
+          <li routerLinkActive="active">
+            <a (click)="redirectFunction('showpage')">О нас</a></li>
+          <li routerLinkActive="active">
+            <a (click)="redirectFunction('showprice')">Цены</a></li>
+          <li routerLinkActive="active">
+            <a (click)="redirectFunction('courtcases')">Наши дела</a></li>
+          <li routerLinkActive="active">
+            <a (click)="redirectFunction('blog')">Блог</a></li>
+          <li class="divider"></li>
+          <li routerLinkActive="active">
+            <a (click)="redirectFunction('uslugiFL')">Услуги Физ. лицам</a></li>
+            <li routerLinkActive="active">
+              <a (click)="redirectFunction('uslugiUL')">Услуги Юр. лицам</a></li>
+              <li routerLinkActive="active">
+                <a (click)="redirectFunction('question')">Задать вопрос</a></li>
+        </ng-container>
+
+        <ng-container *ngIf="auth.isAuthenticated()">
+          <li routerLinkActive="active">
+            <a *ngIf="auth.isAdmin()" (click)="redirectFunction('admin')" routerLinkActive="router-link-active">Админ</a></li>
+          <li routerLinkActive="active">
+            <a (click)="redirectFunction('lk')">Личный кабинет</a></li>
+          <li routerLinkActive="active">
+            <a (click)="logout()">Выход</a></li>
+          <li class="divider"></li>
+          <li routerLinkActive="active">
+            <a (click)="redirectFunction('showpage')">О нас</a></li>
+          <li routerLinkActive="active">
+            <a (click)="redirectFunction('showprice')">Цены</a></li>
+          <li routerLinkActive="active">
+            <a (click)="redirectFunction('courtcases')">Наши дела</a></li>
+          <li routerLinkActive="active">
+            <a (click)="redirectFunction('blog')">Блог</a></li>
+        </ng-container>
+      </ul>
+
+  </div>
+</div>
+<ul class="sidenav" id="mobile-nav">
+  <li class="bold" routerLinkActive="active">
+    <a [routerLink]="['/main']" routerLinkActive="router-link-active" class="waves-effect waves-teal">
+    </a></li>
+  <li class="divider"></li>
+  <li class="bold last"><a href="/" class="waves-effect waves-teal" (click)=logout($event)>Выйти</a></li>
+</ul>
+
+<!---->
+<router-outlet></router-outlet>
+
+<footer *ngIf="!auth.isAdmin() || !auth.isAuthenticated()" class="page-footer teal">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">О нас</h5>
+        <p class="grey-text text-lighten-4">Наша компания оказывает юридические услуги с 2012 года. Команда
+          профессиональных юристов
+          решит вашу любую проблему законным путем.
+        </p>
+
+
+      </div>
+      <div class="col l3 s12">
+        <h5 class="white-text">Услуги</h5>
+        <ul>
+          <li><a class="white-text" routerLinkActive="active" routerLink="/uslugiFL">Физическим лицам</a></li>
+          <li><a class="white-text" routerLinkActive="active" routerLink="/uslugiUL">Юридическим лицам</a></li>
+          <li><a class="white-text" routerLinkActive="active" routerLink="/showprice">Цены на услуги</a></li>
+          <li><a class="white-text" routerLink="/courtcases">Наши дела</a></li>
+        </ul>
+      </div>
+      <div class="col l3 s12">
+        <h5 class="white-text">О компании</h5>
+        <ul>
+          <li><a class="white-text" routerLinkActive="active" routerLink="/showpage">О нас</a></li>
+          <li><a class="white-text" routerLinkActive="active" routerLink="/requisite">Реквизиты</a></li>
+          <li><a hidden class="white-text" href="#!">Отзывы</a></li>
+          <li><a class="white-text" routerLink="/blog">Наш блог</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      Made by <a class="brown-text text-lighten-3" href="http://webprog.club">WebProg.club</a>
+      (C) ООО "Гарант Консалтинг" 2020
+    </div>
+  </div>
+</footer>
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/init.js"></script>

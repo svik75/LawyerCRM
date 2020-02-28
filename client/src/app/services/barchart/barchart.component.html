@@ -1,0 +1,47 @@
+<div class="row">
+
+  <div class="row teal-text">
+    <H5 class="center"><br><b>Рассчитайте точную стоимость банкротства</b></H5>
+    <form (ngSubmit)="onSubmit()" class="card" [ngStyle]="{'padding': '20px'}">
+      <p class="range-field"> Сумма долга
+        <input type="range" value="300000" min="300000" max="20000000" multiple (input)="valueChanged($event)" />
+        <span><b>{{dolg | currency: 'RUB'}} </b> </span>
+      </p>
+      <p class="range-field"> Количество кредиторов
+        <input type="range" value="1" min="1" max="10" (input)="valueChangedCred($event)" />
+        <span><b>{{cred}}</b> штук</span>
+      </p>
+      <p class="range-field"> Официальный доход в месяц
+        <input type="range" value="0" min="0" max="100000" (input)="valueChangedDohod($event)" />
+        <span><b>{{dohod | currency: 'RUB'}}</b></span>
+      </p>
+
+      <div class="switch">
+        Прописка в Москве (Московской области) или другом регионе?<br>
+        <label>
+          Нет
+          <input type="checkbox" (change)="valueChangedRegMsc($event)">
+          <span class="lever"></span>
+          Да
+        </label>
+      </div>
+
+      <div class="row">
+        <br><h5><b>Стоимость банкротства составит {{costB | currency: 'RUB'}} </b></h5>
+      </div>
+  </form>
+
+  <div class="center">
+  <button  class="modal-action btn waves-effect" (click)="ShowGP()">{{showGrPl === false ? 'Показать' : 'Обновить'}} график платежей
+    </button>
+    </div>
+
+  <div *ngIf="showGrPl">
+    <h5 class="center teal-text">График платежей</h5>
+    <div style="display: block;">
+      <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+        [plugins]="barChartPlugins" [chartType]="barChartType">
+      </canvas>
+    </div>
+  </div>
+</div>

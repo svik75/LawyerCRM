@@ -1,0 +1,131 @@
+#line-chart-parent {
+  display: grid;
+  min-height: 350px;
+ }
+
+ .description {
+  padding: 20px 40px;
+  background: white; /* фон рамки */
+  font-size: 20px; /* размер шрифта */
+  border-radius: 8px;
+  -webkit-box-shadow: 1px 1px 3px 2px #888;
+  -moz-box-shadow: 1px 1px 3px 2px #888;
+  box-shadow: 1px 1px 3px 2px #888;
+    color: teal;
+    font-family: 'Lato', sans-serif;
+    text-align: justify;
+}
+
+.description2 {
+  padding: 20px 40px;
+  background: white; /* фон рамки */
+
+  font-size: 20px; /* размер шрифта */
+  border-radius: 8px;
+  -webkit-box-shadow: 1px 1px 3px 2px #888;
+  -moz-box-shadow: 1px 1px 3px 2px #888;
+  box-shadow: 1px 1px 3px 2px #888;
+    color: teal;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+}
+
+.cost {
+  padding: 20px 40px;
+  background: #038f8f; /* фон рамки */
+  font-size: 20px; /* размер шрифта */
+  border-radius: 8px;
+  -webkit-box-shadow: 1px 1px 3px 2px #888;
+  -moz-box-shadow: 1px 1px 3px 2px #888;
+  box-shadow: 1px 1px 3px 2px #888;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+
+}
+
+.card {
+  padding: 20px 40px;
+  background: white; /* фон рамки */
+  font-size: 20px; /* размер шрифта */
+  border: 1px  #0b8fcc; /* размер, форма и цвет рамки */
+  border-radius: 10px; /*  радиус скругления углов рамки */
+  box-shadow: 0 0 0 4px teal, 2px 1px 6px 4px rgba(107, 194, 228, 0.5); /* смещение, размер и цвет тени рамки*/
+    color: teal;
+    font-family: 'Lato', sans-serif;
+    text-align: justify;
+}
+.name {
+  color: teal;
+}
+
+label {
+  color: teal;
+}
+
+
+ /* label color */
+ .input-field {
+  color: teal;
+}
+ /* label color */
+ .input-field label {
+  color: teal;
+}
+/* label focus color */
+.input-field input[type=text]:focus + label {
+  color: teal;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid teal;
+  box-shadow: 0 1px 0 0 teal;
+}
+/* valid color */
+.input-field input[type=text].valid {
+  border-bottom: 1px solid black;
+  box-shadow: 0 1px 0 0 black;
+  color: black;
+}
+/* invalid color */
+.input-field input[type=text].invalid {
+  border-bottom: 1px solid red;
+  box-shadow: 0 1px 0 0 red;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: teal;
+}
+.responsive-img {
+  width: 80%;
+  border-radius: 8px;
+  -webkit-box-shadow: 1px 1px 3px 2px #888;
+  -moz-box-shadow: 1px 1px 3px 2px #888;
+  box-shadow: 1px 1px 3px 2px #888;
+
+}
+.textbox {
+  border-top-width: 35px;
+  border-bottom-width: 100px;
+  -webkit-box-shadow: 3px 3px 6px 4px #888;
+  -moz-box-shadow: 3px 3px 6px 4px #888;
+  box-shadow: 3px 3px 6px 4px #888;
+}
+
+.collection-item {
+  border-color: teal;
+  border-radius: 10px;
+  line-height: 50px;
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+
+.collection {
+  border-color: teal;
+border-radius: 10px;
+border-spacing: 7px 11px;
+border-collapse: separate;
+
+}
+
+

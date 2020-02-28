@@ -1,0 +1,84 @@
+<ul id="dropdown1" class="dropdown-content" [ngStyle]="{'position': '-webkit-sticky', 'position': 'position', 'top':0}">
+  <li><a routerLink="/main" routerLinkActive="active">Главная</a></li>
+  <li class="divider"></li>
+  <li class="bold" *ngFor="let link of links" routerLinkActive="active">
+    <a (click)="redirectFunction(link.url)" routerLinkActive="router-link-active" class="waves-effect waves-teal">
+      {{link.name}}</a></li>
+  <li class="divider"></li>
+  <li *ngIf="auth.isAuthenticated()"><a (click)="logout()">Выход</a></li>
+</ul>
+
+
+<nav class="white" role="navigation" [hidden]="isMobile()">
+  <div class="nav-wrapper " [ngStyle]="{'background-color': 'teal', 'color': 'white'}">
+    &nbsp; &nbsp;
+    <a class="brand-logo white-text"><i class="large material-icons white-text">donut_large</i></a>
+    &nbsp; &nbsp;&nbsp; &nbsp;
+  <span class="white-text">Добро пожаловать, {{auth.getUserName()}}!</span>
+      <ul ul class="right hide-on-med-and-down">
+         <li><input [(ngModel)]="searchText" [ngStyle]="{'border-color': 'white'}" id="search" class="white-text" type="search" required></li>
+        <li><a  (click)="search()"><i class="material-icons left white-text">search</i></a></li>
+
+       <li><a #navbar class="dropdown-trigger" data-target="dropdown1" [ngStyle]="{'color': 'white'}">Меню<i
+            class="material-icons right">dehaze</i></a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="row" [hidden]="!isMobile()">
+  <div class="row">
+    <div class="col s12">
+      <a href="#!" data-target="mobile-nav" class="sidenav-trigger" [ngStyle]="{'display': 'block'}">
+        <i class="material-icons" (click)="openMenu()" [ngStyle]="{'vertical-align': 'middle'}">menu</i>
+      </a>
+      <ul id="slide-out" class="sidenav" #sidenav>
+        <li>
+          <div class="user-view">
+            <div class="background">
+              <img src="assets/office.jpg">
+            </div>
+            <a (click)="redirectFunction('lk')" routerLinkActive="router-link-active"><img class="circle"
+                src="assets/yuna.png"></a>
+            <a (click)="redirectFunction('lk')" routerLinkActive="router-link-active"><span
+                class="white-text name">{{auth.getUserName()}}</span></a>
+            <a (click)="redirectFunction('lk')" routerLinkActive="router-link-active"><span
+                class="white-text email">{{auth.getUserEmail()}}</span></a>
+          </div>
+        </li>
+        <li class="bold last"><a href="/main" class="waves-effect waves-teal">На главную</a></li>
+        <li class="divider"></li>
+        <li class="bold" *ngFor="let link of links" routerLinkActive="active">
+          <a (click)="redirectFunction(link.url)" routerLinkActive="router-link-active" class="waves-effect waves-teal">
+            {{link.name}}</a></li>
+        <li class="divider"></li>
+        <li class="bold last"><a class="waves-effect waves-teal" (click)=logout($event)>Выйти</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE NAV -->
+<ul class="sidenav" id="mobile-nav" [hidden]="!isMobile()">
+  <li class="bold" *ngFor="let link of links" routerLinkActive="active">
+    <a [routerLink]="[link.url]" routerLinkActive="router-link-active" class="waves-effect waves-teal">
+      {{link.name}}</a></li>
+  <li class="bold last"><a href="/" class="waves-effect waves-teal" (click)=logout($event)>Выйти</a></li>
+</ul>
+<!--- Page layout -->
+<div class="row">
+  <div class="col s12 m4 l3" [hidden]="isMobile()">
+    <ul class="border">
+      <H5 class="center">Admin</H5>
+      <li ><a href="/main" class="teal-text text-bold">На главную</a></li>
+      <li  *ngFor="let link of links" routerLinkActive="active">
+        <a [routerLink]="[link.url]" routerLinkActive="router-link-active" class="teal-text text-bold">
+          {{link.name}}</a></li>
+      <li ><a href="/" class="teal-text text-bold" (click)=logout($event)>Выйти</a></li>
+    </ul>
+  </div>
+  <div class="col s12 m8 l9">
+    <router-outlet></router-outlet>
+
+  </div>
+</div>
