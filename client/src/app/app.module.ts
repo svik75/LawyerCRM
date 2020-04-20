@@ -32,6 +32,7 @@ import { ChartsModule } from 'ng2-charts';
 import { BarchartComponent } from './services/barchart/barchart.component';
 import { PiechartComponent } from './services/piechart/piechart.component';
 import { ReportsComponent } from './admin/reports/reports.component';
+import { HoverDirective } from './directives/hover.directive';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -61,7 +62,8 @@ registerLocaleData(localeRu, 'ru');
     BlogComponent,
     BarchartComponent,
     PiechartComponent,
-    ReportsComponent
+    ReportsComponent,
+    HoverDirective
   ],
   imports: [
     BrowserModule,

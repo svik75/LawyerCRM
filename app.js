@@ -7,6 +7,7 @@ const authRoute = require('./routes/authroute')
 const queryRoute = require('./routes/queryroute')
 const claimRoute = require('./routes/claimroute')
 const contractRoute = require('./routes/contractroute')
+const buhRoute = require('./routes/buxgalterrouter')
 const cors = require('cors')
 const morgan = require('morgan')
 const passport = require('passport')
@@ -27,5 +28,7 @@ app.use('/api/auth', authRoute)
 app.use('/api/query', queryRoute)
 app.use('/api/claim', claimRoute)
 app.use('/api/contract', contractRoute)
+app.use('/api/mailer', buhRoute)
+
 
 module.exports = app;

@@ -9,7 +9,7 @@ import { Claim } from '../services/interfaces';
 import { MaterialService } from '../services/material.service';
 import { Subscription } from 'rxjs';
 import { ClaimService } from '../services/claim.service';
-import { blog } from '../services/data';
+import { blogUl } from '../services/data';
 import { pics } from '../services/data';
 
 
@@ -83,7 +83,7 @@ export class UslugiFLComponent implements OnInit, AfterContentChecked, OnDestroy
     }
 
     Object.assign(this, { list });
-    Object.assign(this, { blog });
+    Object.assign(this, { blogUl });
     Object.assign(this, { pics });
     Object.assign(this, { flDesciption });
     localStorage.setItem('currentCourt', '');
@@ -219,9 +219,9 @@ export class UslugiFLComponent implements OnInit, AfterContentChecked, OnDestroy
   // -------------------------------------------------
   returnBlog(uid: number): string {
 
-    const idx = blog.findIndex((p) => p.uid === uid);
+    const idx = blogUl.findIndex((p) => p.uid === uid);
     if (idx >= 0) {
-      return blog[idx].descr;
+      return blogUl[idx].descr;
     } else {
       return '';
     }

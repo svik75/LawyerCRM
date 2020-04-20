@@ -1,12 +1,12 @@
 <h5 class="row center teal-text"><br><br>Наши судебные дела</h5>
-<div class="col s12" [ngStyle]="{'padding': '20px'}" >
+<div class="col s12">
   <ng-container *ngFor="let item of courtCases">
-  <div class="card horizontal" *ngIf="currentCourt == item.uid || item.uid === 0 || !courtId">
+  <div class="card horizontal"  [ngStyle]="{'margin': '1% auto'}" *ngIf="currentCourt == item.uid || item.uid === 0 || !courtId">
     <div class="card-image" [hidden]="isMobile()">
       <img src="assets/6.jpg">
     </div>
     <div class="card-stacked" >
-    <span class="card-title teal-text"><b>{{item.title}}</b></span>
+    <span class="card-title center teal-text"><b>{{item.title}}</b></span>
       <div class="card-content">
         <p>{{item.descr}}</p>
       </div>
@@ -16,6 +16,6 @@
 
     </div>
 
-  </div><br>
+  </div>
 </ng-container>
 </div>

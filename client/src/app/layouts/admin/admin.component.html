@@ -1,4 +1,4 @@
-<ul id="dropdown1" class="dropdown-content" [ngStyle]="{'position': '-webkit-sticky', 'position': 'position', 'top':0}">
+<ul id="dropdown1" class="dropdown-content" [ngStyle]="{'position': '-webkit-sticky', 'top':0}">
   <li><a routerLink="/main" routerLinkActive="active">Главная</a></li>
   <li class="divider"></li>
   <li class="bold" *ngFor="let link of links" routerLinkActive="active">
@@ -52,7 +52,7 @@
           <a (click)="redirectFunction(link.url)" routerLinkActive="router-link-active" class="waves-effect waves-teal">
             {{link.name}}</a></li>
         <li class="divider"></li>
-        <li class="bold last"><a class="waves-effect waves-teal" (click)=logout($event)>Выйти</a></li>
+        <li class="bold last"><a class="waves-effect waves-teal" (click)=logout()>Выйти</a></li>
       </ul>
     </div>
   </div>
@@ -63,7 +63,7 @@
   <li class="bold" *ngFor="let link of links" routerLinkActive="active">
     <a [routerLink]="[link.url]" routerLinkActive="router-link-active" class="waves-effect waves-teal">
       {{link.name}}</a></li>
-  <li class="bold last"><a href="/" class="waves-effect waves-teal" (click)=logout($event)>Выйти</a></li>
+  <li class="bold last"><a href="/" class="waves-effect waves-teal" (click)=logout()>Выйти</a></li>
 </ul>
 <!--- Page layout -->
 <div class="row">
@@ -74,7 +74,7 @@
       <li  *ngFor="let link of links" routerLinkActive="active">
         <a [routerLink]="[link.url]" routerLinkActive="router-link-active" class="teal-text text-bold">
           {{link.name}}</a></li>
-      <li ><a href="/" class="teal-text text-bold" (click)=logout($event)>Выйти</a></li>
+      <li ><a href="/" class="teal-text text-bold" (click)=logout()>Выйти</a></li>
     </ul>
   </div>
   <div class="col s12 m8 l9">

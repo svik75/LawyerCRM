@@ -32,7 +32,8 @@
 
 .cost {
   padding: 20px 40px;
-  background: #038f8f; /* фон рамки */
+  margin: auto;
+  background: linear-gradient(teal, rgb(108, 241, 241)); /* фон рамки */
   font-size: 20px; /* размер шрифта */
   border-radius: 8px;
   -webkit-box-shadow: 1px 1px 3px 2px #888;
@@ -43,6 +44,9 @@
     text-align: center;
 
 }
+@media  (min-width: 960px) {
+       .cost {width: 50%;}
+    }
 
 .card {
   padding: 20px 40px;
@@ -115,13 +119,18 @@ label {
 .collection-item {
   border-color: teal;
   border-radius: 10px;
-  line-height: 50px;
+  line-height: 40px;
   padding-top: .5em;
   padding-bottom: .5em;
 }
+/*
+.collection-item:hover {
+  background: linear-gradient(teal, rgb(108, 241, 241)) !important;
+  color: white !important;
+}*/
 
 .collection {
-  border-color: teal;
+border-color: teal;
 border-radius: 10px;
 border-spacing: 7px 11px;
 border-collapse: separate;

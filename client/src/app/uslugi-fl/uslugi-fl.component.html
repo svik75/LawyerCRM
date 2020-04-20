@@ -9,7 +9,7 @@
       </ng-container>
 
       <ng-container *ngFor="let item of list">
-        <a class="collection-item" *ngIf="currentId === item.id" (click)="onClick(item)"
+        <a hover class="collection-item" *ngIf="currentId === item.id" (click)="onClick(item)"
           [ngStyle]="{'font-size': 'large', 'cursor': 'pointer'}">{{item.name}}</a>
       </ng-container>
     </div>
