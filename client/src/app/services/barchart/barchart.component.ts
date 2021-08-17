@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Label } from 'ng2-charts';
-import { ElementSchemaRegistry } from '@angular/compiler';
-import { MaterialService } from '../material.service';
+
 
 @Component({
   selector: 'app-barchart',
@@ -40,7 +39,7 @@ export class BarchartComponent implements OnInit {
     const cDate = new Date();
     const cMonth = cDate.getMonth();
     for (let i = 0; i < 10; i++) {
-      this.barChartLabels[i] = (cMonth + i) > 11 ? this.month[cMonth - 12 + i] : this.month[cMonth + i];
+    //  this.barChartLabels[i] = (cMonth + i) > 11 ? this.month[cMonth - 12 + i] : this.month[cMonth + i];
     }
 
   }
@@ -52,6 +51,7 @@ export class BarchartComponent implements OnInit {
   ShowGP() {
     const monthCost = Math.round(this.costB / 10);
     this.barChartData = [
+      // tslint:disable-next-line: max-line-length
       { data: [monthCost, monthCost, monthCost, monthCost, monthCost, monthCost, monthCost, monthCost, monthCost, monthCost], label: 'Оплата за услуги' },
       { data: [12800, 0, 12500, 0, 0, 0, 0, 0, 0, 0], label: 'Оплата в суд' },
     ];

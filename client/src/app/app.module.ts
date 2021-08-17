@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
-import { registerLocaleData } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -28,11 +28,11 @@ import { ShowpriceComponent } from './services/showprice/showprice.component';
 import { CourtcasesComponent } from './services/courtcases/courtcases.component';
 import { RequisiteComponent } from './services/requisite/requisite.component';
 import { BlogComponent } from './services/blog/blog.component';
-import { ChartsModule } from 'ng2-charts';
 import { BarchartComponent } from './services/barchart/barchart.component';
 import { PiechartComponent } from './services/piechart/piechart.component';
 import { ReportsComponent } from './admin/reports/reports.component';
 import { HoverDirective } from './directives/hover.directive';
+import { ChartsModule } from 'ng2-charts';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -70,9 +70,10 @@ registerLocaleData(localeRu, 'ru');
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ChartsModule,
+    CommonModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ChartsModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'ru'}
