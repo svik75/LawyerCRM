@@ -14,7 +14,7 @@ module.exports.login = async function (req, res) {
             const token = jwt.sign({
                 email: candidate.email,
                 userId: candidate.id
-            },keys.jwt, {expiresIn: 60*60} )
+            },keys.jwt, {expiresIn: '360s'} )
             res.status(200).json({ token: `Bearer ${token}`})
         } else {
             res.status(401).json({message: 'Неверный пароль! Попытайтесь снова.'})
@@ -29,7 +29,7 @@ module.exports.login = async function (req, res) {
 module.exports.register = async function (req, res) {
 
     const candidate = await User.findOne({ email: req.body.email })
-    console.log(req.body.email )
+    // console.log(req.body.email )
     if (candidate) {
         res.status(409).json({message: 'Пользователь с таким email уже зарегистрирован!'})
     } else {

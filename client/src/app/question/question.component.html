@@ -17,22 +17,23 @@
           [ngClass]="{'invalid': form.get('name').invalid && form.get('name').touched}">
         <label for="pos-cost">Имя</label>
         <span class="helper-text red-text" *ngIf="form.get('name').invalid && form.get('name').touched">
-          Введите ваше имя
+          Введите ваше имя на русском
         </span>
       </div>
       <div class="input-field">
         <input  formControlName="phone" type="number"
-          [ngClass]="{'invalid': form.get('phone').invalid && form.get('phone').touched}">
+          [ngClass]="{'invalid': form.get('phone').invalid && form.get('phone').touched}" >
         <label for="pos-cost">Телефон</label>
         <span class="helper-text red-text" *ngIf="form.get('phone').invalid && form.get('phone').touched">
-          Введите телефон
+          Введите корректный телефон
         </span>
       </div>
+
       <div class="input-field">
         <input  formControlName="email" type="email">
         <label for="pos-cost">Email</label>
         <span class="helper-text red-text" *ngIf="form.get('email').invalid && form.get('email').touched">
-          Введите email
+          Введите корректный email
         </span>
       </div>
 

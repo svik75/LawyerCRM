@@ -15,7 +15,7 @@ export class BlogComponent implements OnInit, AfterViewInit, OnDestroy {
   quizFinished = false;
   selectedId = 0;
   currentUid = 0;
-  @ViewChild('collapsible', null) elCollapsible: ElementRef;
+  @ViewChild('collapsible') elCollapsible: ElementRef;
 
   constructor() { }
 

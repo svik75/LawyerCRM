@@ -13,8 +13,8 @@ import { AuthService } from 'src/app/services/auth.service';
 export class UserlayoutComponent implements OnInit, OnDestroy, AfterViewInit {
   sidenavmain: MaterialInstance;
   navbar: MaterialInstance;
-  @ViewChild('sidenavmain', { static: false }) sideRef: ElementRef;
-  @ViewChild('navbar', { static: false }) navRef: ElementRef;
+  @ViewChild('sidenavmain') sideRef: ElementRef;
+  @ViewChild('navbar') navRef: ElementRef;
 
 // ----------------------------------
   redirectFunction(str: string) {

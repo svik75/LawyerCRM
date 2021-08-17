@@ -12,9 +12,9 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./claims-fl.component.css']
 })
 export class ClaimsFLComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('floatBtn', null) floatBtnRef: ElementRef;
-  @ViewChild('formSelect', null) formSelectRef: ElementRef;
-  @ViewChild('date', null) dateRef: ElementRef;
+  @ViewChild('floatBtn') floatBtnRef: ElementRef;
+  @ViewChild('formSelect') formSelectRef: ElementRef;
+  @ViewChild('date') dateRef: ElementRef;
   formSelect: MaterialInstance;
   floatBtn: MaterialInstance;
   datePicker: MaterialInstance;

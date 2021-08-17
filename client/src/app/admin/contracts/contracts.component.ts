@@ -12,12 +12,12 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./contracts.component.css']
 })
 export class ContractsComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('floatBtn', null) floatBtnRef: ElementRef;
-  @ViewChild('formSelect', null) formSelectRef: ElementRef;
-  @ViewChild('formSelectPayment', null) formSelectRefPayment: ElementRef;
-  @ViewChild('modal', null) modalRef: ElementRef;
-  @ViewChild('dateP1', null) dateRef1: ElementRef;
-  @ViewChild('dateP2', null) dateRef2: ElementRef;
+  @ViewChild('floatBtn') floatBtnRef: ElementRef;
+  @ViewChild('formSelect') formSelectRef: ElementRef;
+  @ViewChild('formSelectPayment') formSelectRefPayment: ElementRef;
+  @ViewChild('modal') modalRef: ElementRef;
+  @ViewChild('dateP1') dateRef1: ElementRef;
+  @ViewChild('dateP2') dateRef2: ElementRef;
 
 
   datePicker1: MaterialInstance;

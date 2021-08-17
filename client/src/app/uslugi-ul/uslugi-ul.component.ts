@@ -67,14 +67,14 @@ export class UslugiULComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if (this.auth.isAuthenticated()) {
       this.form = new FormGroup({
-        name: new FormControl(this.auth.getUserName(), [Validators.required]),
-        phone: new FormControl(this.auth.getUserPhone(), [Validators.required]),
+        name: new FormControl(this.auth.getUserName(), [Validators.required,Validators.pattern(/^[А-Яа-я]*$/)]),
+        phone: new FormControl(this.auth.getUserPhone(), [Validators.required, Validators.pattern(/^[0-9]\d*$/)]),
         email: new FormControl(this.auth.getUserEmail(), [Validators.required, Validators.email])
       });
     } else {
       this.form = new FormGroup({
-        name: new FormControl(null, [Validators.required]),
-        phone: new FormControl(null, [Validators.required]),
+        name: new FormControl(null, [Validators.required,Validators.pattern(/^[А-Яа-я]*$/)]),
+        phone: new FormControl(null, [Validators.required, Validators.pattern(/^[0-9]\d*$/)]),
         email: new FormControl(null, [Validators.required, Validators.email])
       });
     }

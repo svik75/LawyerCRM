@@ -9,8 +9,8 @@ import { MaterialInstance, MaterialService } from 'src/app/services/material.ser
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit, OnDestroy {
-  @ViewChild('sidenav', null) refNav: ElementRef;
-  @ViewChild('navbar', null) navRef: ElementRef;
+  @ViewChild('sidenav') refNav: ElementRef;
+  @ViewChild('navbar') navRef: ElementRef;
 
   sidenav: MaterialInstance;
   navbar: MaterialInstance;
@@ -28,13 +28,13 @@ export class AdminComponent implements OnInit, OnDestroy {
   ];
 
   constructor(public auth: AuthService, private router: Router) { }
-maxMobileWidthPx = 600;
+  maxMobileWidthPx = 600;
   isMobile = () => {
     return window.innerWidth <= this.maxMobileWidthPx;
   }
 
   ngOnInit() {
-      this.sidenav = MaterialService.initializeSideBar(this.refNav);
+    this.sidenav = MaterialService.initializeSideBar(this.refNav);
 
     this.navbar = MaterialService.initializeNavbar(this.navRef);
     if (this.isMobile()) {

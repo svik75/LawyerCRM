@@ -12,9 +12,9 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./claims-ul.component.css']
 })
 export class ClaimsULComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('floatBtn', null) floatBtnRef: ElementRef;
-  @ViewChild('formSelect', null) formSelectRef: ElementRef;
-  @ViewChild('date', null) dateRef: ElementRef;
+  @ViewChild('floatBtn') floatBtnRef: ElementRef;
+  @ViewChild('formSelect') formSelectRef: ElementRef;
+  @ViewChild('date') dateRef: ElementRef;
 
   floatBtn: MaterialInstance;
   datePicker: MaterialInstance;

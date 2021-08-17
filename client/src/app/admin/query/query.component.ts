@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, OnDestroy, ContentChild, TemplateRef, AfterContentInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, OnDestroy, AfterContentInit } from '@angular/core';
 import { QueryService } from 'src/app/services/query.service';
 import { Observable, Subscription } from 'rxjs';
 import { Query, HistoryOrders, User, Filter } from 'src/app/services/interfaces';
@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./query.component.css']
 })
 export class QueryComponent implements OnInit, AfterViewInit, OnDestroy, AfterContentInit {
-  @ViewChild('formSelect', null) formSelectRef: ElementRef;
+  @ViewChild('formSelect') formSelectRef: ElementRef;
 
 
   isFilterVisible = false;
@@ -195,7 +195,7 @@ export class QueryComponent implements OnInit, AfterViewInit, OnDestroy, AfterCo
 
     // this.offset = 0;
     this.filter = filter;
-    if (filter === {}) {this.LIMIT = 10; this.noMoreItems = false;}
+    if (filter === {}) { this.LIMIT = 10; this.noMoreItems = false; }
     // this.reloading = true;
     this.fetch();
   }

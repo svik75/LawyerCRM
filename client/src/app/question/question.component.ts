@@ -22,10 +22,10 @@ export class QuestionComponent implements OnInit {
   ngOnInit() {
     if (this.auth.isAuthenticated) {
       this.form = new FormGroup({
-        query: new FormControl(null, Validators.required),
-        name: new FormControl(this.auth.getUserName(), Validators.required),
-        email: new FormControl(this.auth.getUserEmail(), Validators.required),
-        phone: new FormControl(this.auth.getUserPhone(), Validators.required)
+        query: new FormControl(null, [Validators.required, Validators.minLength(6)]),
+        name: new FormControl(this.auth.getUserName(), [Validators.required,Validators.pattern(/^[А-Яа-я]*$/)]),
+        email: new FormControl(this.auth.getUserEmail(), [Validators.required, Validators.email]),
+        phone: new FormControl(this.auth.getUserPhone(), [Validators.required, Validators.pattern(/^[0-9]\d*$/)])
       });
     } else {
       this.form = new FormGroup({

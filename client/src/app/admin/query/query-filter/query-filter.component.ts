@@ -9,10 +9,10 @@ import { MaterialInstance, MaterialService } from 'src/app/services/material.ser
 })
 export class QueryFilterComponent implements OnInit, AfterViewInit, OnDestroy {
   @Output() onFilter = new EventEmitter<Filter>();
-  @ViewChild('start', null) startRef: ElementRef;
-  @ViewChild('end', null) endRef: ElementRef;
-  @ViewChild('isDone', null) doneRef: ElementRef;
-  @ViewChild('formSelect', null) formSelectRef: ElementRef;
+  @ViewChild('start') startRef: ElementRef;
+  @ViewChild('end') endRef: ElementRef;
+  @ViewChild('isDone') doneRef: ElementRef;
+  @ViewChild('formSelect') formSelectRef: ElementRef;
   @Input() chLink: [];
 
 

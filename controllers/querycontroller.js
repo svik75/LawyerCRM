@@ -61,6 +61,12 @@ module.exports.getById = async function (req, res) {
 
 module.exports.create = async function (req, res) {
     try {
+        const reqEmail = {
+            body : {
+                title: 'Вопрос с сайта legal-msk.ru',
+                body: 'Вопрос: '+req.body.query+'\n Имя: '+ req.body.name+'\n Телефон: '+'\n Email: '+req.body.email
+            }
+        }
         const query = await new Query({
             name: req.body.name,
             query: req.body.query,
@@ -72,7 +78,7 @@ module.exports.create = async function (req, res) {
             date: new Date(),
             queryPath: req.body.queryPath
         }).save()
-        sm.sendEmail('Новый вопрос с сайта legal-msk.ru')
+        sm.sendEmail(reqEmail);
         res.status(200).json(query)
     }
     catch (error) {

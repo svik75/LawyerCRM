@@ -18,7 +18,7 @@ constructor(private auth: AuthService, private router: Router) {
 
 
 
-  @ViewChild('sidebar', null) sidebarRef: ElementRef;
+  @ViewChild('sidebar') sidebarRef: ElementRef;
 
 
   // sidebar: MaterialInstance;

@@ -69,7 +69,7 @@
             <label for="name">Ваше имя:</label>
 
             <span class="helper-text red-text" *ngIf="form.get('name').invalid && form.get('name').touched">
-              <span *ngIf="form.get('name').errors['required']">Введите имя</span>
+              <span *ngIf="form.get('name').invalid && form.get('name').touched">Введите имя на русском</span>
             </span>
           </div>
           <div class="input-field col s12">
@@ -78,8 +78,7 @@
               [ngClass]="{'invalid': form.get('phone').invalid && form.get('phone').touched}">
             <label for="name">Телефон:</label>
             <span class="helper-text red-text" *ngIf="form.get('phone').invalid && form.get('phone').touched">
-              <span *ngIf="form.get('phone').errors['required']">Телефон не должен быть пустым</span>
-
+              Введите корректный телефон
             </span>
           </div>
           <div class="input-field col s12">
@@ -88,8 +87,7 @@
               [ngClass]="{'invalid': form.get('email').invalid && form.get('email').touched}">
             <label for="name">email:</label>
             <span class="helper-text red-text" *ngIf="form.get('email').invalid && form.get('email').touched">
-              <span *ngIf="form.get('email').errors['required']">Email не должен быть пустым</span>
-              <span *ngIf="form.get('email').errors['email']">Введите корректный email</span>
+              <span *ngIf="form.get('email').invalid && form.get('email').touched">Введите корректный email</span>
             </span>
           </div>
 

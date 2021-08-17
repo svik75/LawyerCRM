@@ -10,7 +10,7 @@ import { MaterialService } from 'src/app/services/material.service';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit, OnDestroy {
-  @ViewChild('check', null) chRef: ElementRef;
+  @ViewChild('check') chRef: ElementRef;
   users$: Observable<User[]>;
   users: User[] = [];
   dSub: Subscription;

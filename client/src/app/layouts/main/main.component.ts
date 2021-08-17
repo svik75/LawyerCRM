@@ -13,10 +13,10 @@ import { Query, HistoryOrders } from 'src/app/services/interfaces';
 })
 export class MainComponent implements OnInit, OnDestroy, AfterViewInit {
 
-  @ViewChild('parallax1', null) plxRef1: ElementRef;
-  @ViewChild('parallax2', null) plxRef2: ElementRef;
-  @ViewChild('parallax3', null) plxRef3: ElementRef;
-  @ViewChild('parallax4', null) plxRef4: ElementRef;
+  @ViewChild('parallax1') plxRef1: ElementRef;
+  @ViewChild('parallax2') plxRef2: ElementRef;
+  @ViewChild('parallax3') plxRef3: ElementRef;
+  @ViewChild('parallax4') plxRef4: ElementRef;
 
   plx1: MaterialInstance;
   plx2: MaterialInstance;
@@ -54,8 +54,6 @@ export class MainComponent implements OnInit, OnDestroy, AfterViewInit {
     this.plx2.destroy();
     this.plx3.destroy();
     this.plx4.destroy();
-
-
   }
 
   ngonSubmit() {
