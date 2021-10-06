@@ -45,5 +45,4 @@ app.use('/api/contract', contractRoute)
 app.use('/api/mailer', buhRoute)
 // app.use('/api/mailerl', vuRoute)
 
-
 module.exports = app;

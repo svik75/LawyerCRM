@@ -6,11 +6,13 @@ import { User } from '../services/interfaces';
 import { MaterialService } from '../services/material.service';
 
 
+
 @Component({
   selector: 'app-lk',
   templateUrl: './lk.component.html',
   styleUrls: ['./lk.component.css']
 })
+
 export class LkComponent implements OnInit, OnDestroy {
   form: FormGroup;
   aSub: Subscription;
@@ -44,7 +46,7 @@ export class LkComponent implements OnInit, OnDestroy {
           error => console.log(error));
         this.form.disable();
       }
-    } catch (error) { MaterialService.toast(error); }
+    } catch (error) { console.log(error); }
   }
 
 

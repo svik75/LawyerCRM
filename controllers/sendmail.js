@@ -10,7 +10,7 @@ let transporter = nodemailer.createTransport({
     },
     secure: false, // true for 465, false for other ports
     auth: {
-      user: 'info@garantk.ru', // generated ethereal user
+      user: 'info@gkons.ru', // generated ethereal user
       pass: 'Info31528' // generated ethereal password
     }
   })
@@ -19,7 +19,7 @@ try{
   // send mail with defined transport object
   info = await transporter.sendMail({
     from: 'Garantk info', // sender address
-    to: "lawyer@garantk.ru", // list of receivers
+    to: "help@legal-msk.ru", // list of receivers
     subject: msg, // Subject line
     text: msg, // plain text body
     html: "<b>Перейдите в раздел администратора для работы с вопросом.</b>" // html body
@@ -46,8 +46,8 @@ module.exports.sendEmailViaBody = async function(req) {
       },
       secure: false, // true for 465, false for other ports
       auth: {
-        user: 'info@garantk.ru', // generated ethereal user
-        pass: 'info31528' // generated ethereal password
+        user: 'info@gkons.ru', // generated ethereal user
+        pass: 'Info31528' // generated ethereal password
       }
     })
     let info
@@ -55,7 +55,7 @@ module.exports.sendEmailViaBody = async function(req) {
     // send mail with defined transport object
     info = await transporter.sendMail({
       from: 'Garantk info', // sender address
-      to: "lawyer@garantk.ru", // list of receivers
+      to: "help@legal-msk.ru", // list of receivers
       subject: req.body.title, // Subject line
       text: req.body.body, // plain text body
       html: `${req.body.body}` // html body

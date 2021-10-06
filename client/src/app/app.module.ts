@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserlayoutComponent } from './layouts/userlayout/userlayout.component';
 import { LkComponent } from './lk/lk.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UslugiFLComponent } from './uslugi-fl/uslugi-fl.component';
 import { UslugiULComponent } from './uslugi-ul/uslugi-ul.component';
 import { QueryComponent } from './admin/query/query.component';
@@ -33,6 +33,7 @@ import { PiechartComponent } from './services/piechart/piechart.component';
 import { ReportsComponent } from './admin/reports/reports.component';
 import { HoverDirective } from './directives/hover.directive';
 import { ChartsModule } from 'ng2-charts';
+import {TokenInterceptor} from './services/token.interceptor';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -76,7 +77,12 @@ registerLocaleData(localeRu, 'ru');
     ChartsModule
   ],
   providers: [
-    {provide: LOCALE_ID, useValue: 'ru'}
+    {provide: LOCALE_ID, useValue: 'ru'},
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

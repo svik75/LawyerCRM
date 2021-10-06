@@ -10,30 +10,27 @@ import { MaterialService } from './material.service';
 export class AuthService {
 
   private token = null;
-
-
-
   constructor(private http: HttpClient) {
 
   }
-  // ------------------------------------------
+  // ---------------------------------------------------------------------
   register(user: User): Observable<User> {
     return this.http.post<User>('/api/auth/register', user);
   }
-  // ------------------------------------------
+  // --------------------------------------------------------------------
   delete(user: User): Observable<User> {
     return this.http.delete<User>(`/api/auth/${user.email}`);
   }
-  // ------------------------------------------
+  // --------------------------------------------------------------------
   update(user: User): Observable<User> {
     return this.http.patch<User>('/api/auth/patch', user);
   }
-  // ------------------------------------------
+  // --------------------------------------------------------------------
   updateAdmin(user: User): Observable<User> {
 
     return this.http.patch<User>('/api/auth/patchadmin', user);
   }
-  // ----------------------------------------
+  // -------------------------------------------------------------------
   login(user: User): Observable<{ token: string }> {
     return this.http.post<{ token: string }>('/api/auth/login', user)
       .pipe(
@@ -42,21 +39,19 @@ export class AuthService {
             localStorage.setItem('auth-token', token);
             localStorage.setItem('userEmail', user.email);
             localStorage.setItem('userName', user.name);
-            console.log(user.name);
+            console.log('username:' + user.name);
             if (user.isAdmin === true) {
               localStorage.setItem('isAdmin', 'true');
             } else {
-
               localStorage.setItem('isAdmin', 'false');
             }
-
             this.setToken(token);
           }
         )
       );
 
   }
-  // ----------------------------------------
+  // -------------------------------------------------------------------
   setAfterLogin(email: string) {
 
     this.http.get<User>(`/api/auth/${email}`).subscribe(
@@ -74,43 +69,40 @@ export class AuthService {
       }
     );
 
-
-
 }
-
-// ---------------------------------------------
+// -----------------------------------------------------------------
 getAll(): Observable < User[] > {
   return this.http.get<User[]>(`/api/auth/`);
 }
-// ---------------------------------------------
-getByEmail(email: string): Observable < User > {
+// -----------------------------------------------------------------
+getByEmail(email: string): Observable <User> {
   return this.http.get<User>(`/api/auth/${email}`);
 }
-// ---------------------------------------------
+// -----------------------------------------------------------------
 getUserEmail(): string {
   return localStorage.getItem('userEmail');
 }
-// ---------------------------------------------
+// -----------------------------------------------------------------
 getUserName(): string {
   return localStorage.getItem('userName');
 }
-// ---------------------------------------------
+// -----------------------------------------------------------------
 getUserPhone(): string {
   return localStorage.getItem('userPhone');
 }
-// ------------------------------------------
+// -----------------------------------------------------------------
 setToken(token: string) {
   this.token = token;
 }
-// ------------------------------------------
+// -----------------------------------------------------------------
 getToken(): string {
   return this.token;
 }
-// ------------------------------------------
+// -----------------------------------------------------------------
 isAuthenticated(): boolean {
   return !!this.token;
 }
-// ------------------------------------------
+// ------------------------------------------------------------------
 isAdmin(): boolean {
   const str = localStorage.getItem('isAdmin');
 
@@ -120,10 +112,11 @@ isAdmin(): boolean {
     return false;
   }
 }
-// -------------------------------------------
+// -----------------------------------------------------------------
 logout() {
   this.setToken(null);
   localStorage.clear();
   MaterialService.toast('Вы вышли из системы.');
 }
 }
+// ----------------------------------------------------------------
