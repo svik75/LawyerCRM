@@ -1,7 +1,7 @@
 <h5 class="row center teal-text"><br><br>Наши судебные дела</h5>
 <div class="col s12">
   <ng-container *ngFor="let item of courtCases">
-  <div class="card horizontal"  [ngStyle]="{'margin': '1% auto'}" *ngIf="currentCourt == item.uid || item.uid === 0 || !courtId">
+  <div class="card horizontal"  [ngStyle]="{'margin': '1% auto'}" *ngIf="item">
     <div class="card-image" [hidden]="isMobile()">
       <img src="assets/6.jpg">
     </div>

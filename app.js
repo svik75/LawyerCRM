@@ -9,7 +9,7 @@ const queryRoute = require('./routes/queryroute')
 const claimRoute = require('./routes/claimroute')
 const contractRoute = require('./routes/contractroute')
 const buhRoute = require('./routes/buxgalterrouter')
-// const vuRoute = require('./routes/vashuristrouter')
+const vuRoute = require('./routes/uslugiflrouter')
 
 const cors = require('cors')
 const morgan = require('morgan')
@@ -33,16 +33,16 @@ var fireadmin = admin.initializeApp({
 app.use(passport.initialize())
 require('./controllers/passport')(passport)
 
-app.use(morgan('dev'))
-app.use(cors())
-app.use('/uploads', express.static('uploads'))
-app.use(express.urlencoded({extended: true}))
-app.use(express.json())
-app.use('/api/auth', authRoute)
-app.use('/api/query', queryRoute)
-app.use('/api/claim', claimRoute)
-app.use('/api/contract', contractRoute)
-app.use('/api/mailer', buhRoute)
-// app.use('/api/mailerl', vuRoute)
+app.use(morgan('dev'));
+app.use(cors());
+app.use('/uploads', express.static('uploads'));
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+app.use('/api/auth', authRoute);
+app.use('/api/query', queryRoute);
+app.use('/api/claim', claimRoute);
+app.use('/api/contract', contractRoute);
+app.use('/api/mailer', buhRoute);
+app.use('/api/uslugifl', vuRoute);
 
 module.exports = app;

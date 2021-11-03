@@ -22,7 +22,7 @@ export class CourtcasesComponent implements OnInit {
 
   ngOnInit() {
     Object.assign(this, { courtCases });
-    this.currentCourt = localStorage.getItem('currentCourt');
+    // this.currentCourt = localStorage.getItem('currentCourt').length > 0 ? localStorage.getItem('currentCourt') : '';
   }
 
 }

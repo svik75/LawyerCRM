@@ -65,18 +65,18 @@ export class UslugiFLComponent implements OnInit, AfterContentChecked, OnDestroy
   }
 
   constructor(private chRef: ChangeDetectorRef, private router: Router, private queryS: QueryService,
-    private auth: AuthService, private claimS: ClaimService) { }
+              private auth: AuthService, private claimS: ClaimService) { }
   // ---------------------------
   ngOnInit() {
     if (this.auth.isAuthenticated()) {
       this.form = new FormGroup({
-        name: new FormControl(this.auth.getUserName(), [Validators.required,Validators.pattern(/^[А-Яа-я]*$/)]),
+        name: new FormControl(this.auth.getUserName(), [Validators.required, Validators.pattern(/^[А-Яа-я]*$/)]),
         phone: new FormControl(this.auth.getUserPhone(), [Validators.required, Validators.pattern(/^[0-9]\d*$/)]),
         email: new FormControl(this.auth.getUserEmail(), [Validators.required, Validators.email])
       });
     } else {
       this.form = new FormGroup({
-        name: new FormControl(null, [Validators.required,Validators.pattern(/^[А-Яа-я]*$/)]),
+        name: new FormControl(null, [Validators.required, Validators.pattern(/^[А-Яа-я]*$/)]),
         phone: new FormControl(null, [Validators.required, Validators.pattern(/^[0-9]\d*$/)]),
         email: new FormControl(null, [Validators.required, Validators.email])
       });
