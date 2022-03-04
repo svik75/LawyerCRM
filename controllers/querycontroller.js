@@ -70,7 +70,7 @@ module.exports.create = async function (req, res) {
         const query = await new Query({
             name: req.body.name,
             query: req.body.query,
-            phone:  req.body.phone,
+            phone: req.body.phone,
             email: req.body.email,
             status: req.body.status,
             done: req.body.done,
@@ -78,11 +78,12 @@ module.exports.create = async function (req, res) {
             date: new Date(),
             queryPath: req.body.queryPath
         }).save()
-        sm.sendEmail(reqEmail);
+        sm.sendEmailViaBody(reqEmail);
         res.status(200).json(query)
     }
     catch (error) {
-        console.log(error)
+        console.log(error);
+        res.status(404);
     }
 }
 // ---------------------------------------------

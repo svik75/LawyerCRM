@@ -9,7 +9,7 @@ const queryRoute = require('./routes/queryroute')
 const claimRoute = require('./routes/claimroute')
 const contractRoute = require('./routes/contractroute')
 const buhRoute = require('./routes/buxgalterrouter')
-const vuRoute = require('./routes/uslugiflrouter')
+const uslflRoute = require('./routes/uslugiflrouter')
 
 const cors = require('cors')
 const morgan = require('morgan')
@@ -43,6 +43,6 @@ app.use('/api/query', queryRoute);
 app.use('/api/claim', claimRoute);
 app.use('/api/contract', contractRoute);
 app.use('/api/mailer', buhRoute);
-app.use('/api/uslugifl', vuRoute);
+app.use('/api/uslugifl', uslflRoute);
 
 module.exports = app;

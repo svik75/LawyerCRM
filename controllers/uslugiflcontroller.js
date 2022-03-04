@@ -56,6 +56,6 @@ module.exports.getbyId = async function (req, res) {
     }
     catch (error) {
         console.log(error);
-        //res.status(error.status);
+        res.status(404);
     }
 }
